@@ -21,6 +21,11 @@ let gameState = {
 
 // 初期化
 document.addEventListener('DOMContentLoaded', function() {
+    const bgm = document.getElementById('bgm');
+    if (bgm) {
+        bgm.volume = 0.5;
+        bgm.play().catch(() => {});
+    }
     initializeGame();
 });
 
