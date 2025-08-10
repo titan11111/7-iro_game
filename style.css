@@ -194,6 +194,15 @@ section h2 {
     box-shadow: none;
 }
 
+/* 神様表示エリア */
+.god-display {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #8e44ad;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
 /* 結果表示エリア */
 .result-area {
     text-align: center;
