@@ -97,6 +97,7 @@ function addSelectedColor(spirit) {
     if (gameState.selectedColors.length < 2) {
         gameState.selectedColors.push(spirit);
         updateMixingSlots();
+        displayGod(spirit);
 
         if (gameState.selectedColors.length === 2) {
             document.getElementById('mixButton').disabled = false;
@@ -177,6 +178,7 @@ function setupDropZones() {
 
                     gameState.selectedColors[index] = spirit;
                     updateMixingSlots();
+                    displayGod(spirit);
                 }
             }
         });
@@ -241,8 +243,18 @@ function showMixResult(spirit) {
     spiritNameInput.value = ''; // 入力欄をクリア
     spiritNameInput.placeholder = '新しい名前を入力してね！'; // プレースホルダーを設定
 
+    displayGod(spirit);
     resultArea.style.display = 'block';
     resultArea.scrollIntoView({ behavior: 'smooth' });
+}
+
+function displayGod(spirit) {
+    const godDisplay = document.getElementById('godDisplay');
+    const godName = document.getElementById('godName');
+    if (godDisplay && godName) {
+        godName.textContent = `${spirit.name}の神様が現れた！`;
+        godDisplay.style.display = 'block';
+    }
 }
 
 function nameNewSpirit() {
@@ -336,6 +348,7 @@ function resetMixingArea() {
     resultArea.style.display = 'none';
 
     document.getElementById('mixButton').disabled = true;
+    document.getElementById('godDisplay').style.display = 'none';
 }
 
 // デバッグ用：コンソールでゲーム状態確認
